@@ -10,12 +10,30 @@
         <div id='react-container'></div>
         <script type="text/babel">
 
-        
-
+        var Checkbox = React.createClass({
+            getInitialState() {
+                return {hooked: true}
+            },
+            handleCheck() {
+                this.setState({hooked: !this.state.hooked})
+            },
+            render() {
+                var msg
+                if(this.state.hooked) {
+                    msg = "hooked"
+                } else {
+                    msg = "unhooked"
+                }
+                return ( <div>
+                        <input type="checkbox"
+                               onChange={this.handleCheck}
+                               defaultChecked={this.state.hooked}/>
+                        <p>This box is {msg}</p>
+                    </div>)
+            }
+        })
+        ReactDOM.render(<Checkbox/>,
+            document.getElementById('react-container'))
         </script>
     </body>
 </html>
-
-
-
-
